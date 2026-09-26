@@ -1,0 +1,136 @@
+# ==============================================================================
+# Indoor Campus Map Topology & Accessibility Properties
+# ==============================================================================
+
+nodes:
+  reception:
+    coordinates: [0.0, 0.0]
+    description: "Main reception desk and entrance foyer"
+    accessible: true
+
+  junction_central:
+    coordinates: [5.0, 0.0]
+    description: "Central corridor junction connecting all wings"
+    accessible: true
+
+  classroom:
+    coordinates: [5.0, -6.0]
+    description: "Classroom 101"
+    accessible: true
+
+  corridor_A_entrance:
+    coordinates: [5.0, 4.0]
+    description: "South entrance to Corridor A"
+    accessible: true
+
+  corridor_A_mid:
+    coordinates: [5.0, 8.0]
+    description: "Midpoint of Corridor A (dynamic obstacle injection point)"
+    accessible: true
+
+  corridor_B_entrance:
+    coordinates: [10.0, 0.0]
+    description: "East entrance to Corridor B (Accessible alternative route)"
+    accessible: true
+
+  corridor_B_mid:
+    coordinates: [10.0, 8.0]
+    description: "Midpoint of Corridor B with accessible ramp"
+    accessible: true
+
+  stairs_landing:
+    coordinates: [2.0, 8.0]
+    description: "Direct stairway passage (Non-accessible)"
+    accessible: false
+    contains_stairs: true
+
+  library:
+    coordinates: [5.0, 12.0]
+    description: "Campus library entrance"
+    accessible: true
+
+edges:
+  # Reception to Central Junction
+  - from: "reception"
+    to: "junction_central"
+    distance: 5.0
+    corridor_id: "reception_hallway"
+    has_stairs: false
+    accessible: true
+    width: 2.0
+
+  # Junction to Classroom
+  - from: "junction_central"
+    to: "classroom"
+    distance: 6.0
+    corridor_id: "classroom_wing"
+    has_stairs: false
+    accessible: true
+    width: 1.8
+
+  # Route 1 (Standard / Corridor A): Junction -> Corridor A -> Library
+  - from: "junction_central"
+    to: "corridor_A_entrance"
+    distance: 4.0
+    corridor_id: "corridor_A"
+    has_stairs: false
+    accessible: true
+    width: 1.8
+
+  - from: "corridor_A_entrance"
+    to: "corridor_A_mid"
+    distance: 4.0
+    corridor_id: "corridor_A"
+    has_stairs: false
+    accessible: true
+    width: 1.8
+
+  - from: "corridor_A_mid"
+    to: "library"
+    distance: 4.0
+    corridor_id: "corridor_A"
+    has_stairs: false
+    accessible: true
+    width: 1.8
+
+  # Route 2 (Alternative Accessible / Corridor B via Ramp): Junction -> Corridor B -> Library
+  - from: "junction_central"
+    to: "corridor_B_entrance"
+    distance: 5.0
+    corridor_id: "corridor_B"
+    has_stairs: false
+    accessible: true
+    width: 2.2
+
+  - from: "corridor_B_entrance"
+    to: "corridor_B_mid"
+    distance: 8.0
+    corridor_id: "corridor_B"
+    has_stairs: false
+    accessible: true
+    width: 2.2
+
+  - from: "corridor_B_mid"
+    to: "library"
+    distance: 6.0
+    corridor_id: "corridor_B"
+    has_stairs: false
+    accessible: true
+    width: 2.2
+
+  # Route 3 (Stairs shortcut - strictly inaccessible for wheelchairs):
+  - from: "junction_central"
+    to: "stairs_landing"
+    distance: 3.5
+    corridor_id: "stairwell_wing"
+    has_stairs: true
+    accessible: false
+    width: 1.2
+
+  - from: "stairs_landing"
+    to: "library"
+    distance: 4.5
+    corridor_id: "stairwell_wing"
+    has_stairs: true
+    accessible: false
+    width: 1.2

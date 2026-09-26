@@ -1,0 +1,24 @@
+# ==============================================================================
+# AURA Agent Configuration
+# ==============================================================================
+
+agent:
+  name: "AURA"
+  version: "1.0.0"
+  provider: "fallback"  # Options: fallback, openai, gemini, local
+  model: "gemini-1.5-pro"
+  temperature: 0.0
+  max_tokens: 2048
+  timeout_seconds: 15.0
+
+confidence_thresholds:
+  high_confidence: 0.80      # Autonomous execution (Level 1)
+  medium_confidence: 0.60    # User confirmation required (Level 2)
+  low_confidence: 0.40       # Reject / Request assistance (Level 3)
+
+execution_policies:
+  max_replan_retries: 3
+  task_timeout_seconds: 60.0
+  heartbeat_interval_seconds: 2.0
+  interaction_zone_radius: 0.8  # meters for bag pickup / handoff
+  goal_tolerance_meters: 0.3    # meters arrival tolerance

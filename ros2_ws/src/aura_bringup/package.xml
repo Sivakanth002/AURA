@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>aura_bringup</name>
+  <version>1.0.0</version>
+  <description>Launch packages and execution coordinators for AURA</description>
+  <maintainer email="dhyan2006@gmail.com">Antigravity Engineer</maintainer>
+  <license>Apache-2.0</license>
+
+  <depend>aura_interfaces</depend>
+  <depend>aura_ros2_bridge</depend>
+
+  <exec_depend>ros2launch</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

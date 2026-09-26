@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — Autonomous Assistive Robotics Operator Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">
+      <span class="logo-icon">🤖</span>
+      <div>
+        <h1>AURA OPERATOR DASHBOARD</h1>
+        <p class="subtitle">Autonomous Assistive Robotics Agent • Multi-Agent Control & Telemetry</p>
+      </div>
+    </div>
+    <div class="system-status">
+      <div class="status-badge" id="agent-state-badge">STATE: <span id="agent-state">IDLE</span></div>
+      <div class="status-badge" id="battery-badge">🔋 <span id="robot-battery">100%</span></div>
+      <div class="status-badge" id="ws-badge">⚡ <span id="ws-status">DISCONNECTED</span></div>
+      <button class="btn btn-danger" id="estop-btn" onclick="triggerEstop()">🚨 E-STOP</button>
+    </div>
+  </header>
+
+  <main class="grid-container">
+    <!-- LEFT PANEL: Campus 2D Map & Live HUD -->
+    <section class="panel map-panel">
+      <div class="panel-header">
+        <h2>🗺️ 2D Campus Map & Spatial State</h2>
+        <div class="map-legend">
+          <span><span class="dot dot-robot"></span> Robot</span>
+          <span><span class="dot dot-obj"></span> Object</span>
+          <span><span class="dot dot-clear"></span> Clear</span>
+          <span><span class="dot dot-blocked"></span> Blocked</span>
+          <span><span class="dot dot-stairs"></span> Stairs</span>
+        </div>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="campus-canvas" width="600" height="500"></canvas>
+      </div>
+      <div class="telemetry-hud">
+        <div class="hud-item"><span class="label">Location</span><span class="val" id="hud-pos">[0.00, 0.00]</span></div>
+        <div class="hud-item"><span class="label">Velocity</span><span class="val" id="hud-vel">0.00 m/s</span></div>
+        <div class="hud-item"><span class="label">Carrying</span><span class="val" id="hud-carrying">None</span></div>
+        <div class="hud-item"><span class="label">Waypoint</span><span class="val" id="hud-waypoint">reception</span></div>
+      </div>
+    </section>
+
+    <!-- CENTER PANEL: Mission DAG & Subtask Lifecycle -->
+    <section class="panel mission-panel">
+      <div class="panel-header">
+        <h2>📋 Mission DAG Execution</h2>
+        <span class="revision-badge">Revision: <span id="plan-revision">1</span></span>
+      </div>
+
+      <!-- Goal input bar -->
+      <div class="goal-input-bar">
+        <input type="text" id="goal-input" placeholder="e.g. Get my bag from reception and take me to the library using an accessible route" />
+        <button class="btn btn-primary" onclick="submitGoal()">Dispatch Goal</button>
+      </div>
+
+      <div class="tasks-container" id="tasks-list">
+        <div class="empty-state">No active mission. Enter a goal above or select a Master Demo Scenario.</div>
+      </div>
+
+      <!-- Disambiguation Modal / Card (Hidden by default) -->
+      <div class="hitl-card hidden" id="hitl-modal">
+        <div class="hitl-header">
+          <span class="hitl-icon">❓</span>
+          <div>
+            <h3>Human Clarification Required (Level 2)</h3>
+            <p id="hitl-question">Which object would you like to retrieve?</p>
+          </div>
+        </div>
+        <div class="hitl-options" id="hitl-options-container"></div>
+      </div>
+    </section>
+
+    <!-- RIGHT PANEL: Decision Log & Chaos Control -->
+    <section class="panel control-panel">
+      <div class="panel-header">
+        <h2>⚡ Chaos Injection & Benchmarks</h2>
+      </div>
+      <div class="chaos-buttons">
+        <button class="btn btn-warning" onclick="injectObstacle('corridor_A')">🛑 Block Corridor A</button>
+        <button class="btn btn-success" onclick="restoreCorridor('corridor_A')">🟢 Clear Corridor A</button>
+        <button class="btn btn-warning" onclick="injectLowBattery()">🪫 Inject Low Battery (15%)</button>
+        <button class="btn btn-info" onclick="resetWorld()">🔄 Reset World</button>
+      </div>
+
+      <div class="panel-header" style="margin-top: 15px;">
+        <h2>📝 Structured Decision Trail (Audit Logs)</h2>
+      </div>
+      <div class="decisions-stream" id="decisions-stream">
+        <div class="decision-entry info">
+          <span class="time">[System]</span> AURA Operator Dashboard connected and listening.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+# ==============================================================================
+# Robot Physical Parameters & Operational Thresholds
+# ==============================================================================
+
+robot:
+  id: "aura_bot_01"
+  model: "differential_drive_assistant"
+  footprint:
+    length: 0.6  # meters
+    width: 0.5   # meters
+    radius: 0.35 # meters (clearance radius)
+
+kinematics:
+  max_linear_velocity: 1.0     # m/s
+  min_linear_velocity: 0.1     # m/s
+  max_angular_velocity: 1.5    # rad/s
+  max_linear_acceleration: 0.5 # m/s^2
+
+battery:
+  initial_level: 100.0         # %
+  critical_low_threshold: 20.0 # % (Triggers safe abort or recharge)
+  warning_threshold: 30.0      # %
+  discharge_rate_per_meter: 0.15 # % per meter traversed
+
+manipulation:
+  interaction_radius: 0.8      # meters (distance required to pick up or hand off object)
+  gripper_state: "OPEN"        # OPEN, CLOSED, HOLDING

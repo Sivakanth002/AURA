@@ -1,0 +1,23 @@
+# ==============================================================================
+# Deterministic Safety Rules & Constraint Bounds
+# ==============================================================================
+
+safety:
+  hard_max_linear_velocity: 1.2    # m/s (Absolute upper limit, cannot be overridden by LLM)
+  hard_max_angular_velocity: 2.0   # rad/s
+  min_obstacle_clearance: 0.3      # meters
+  estop_trigger_distance: 0.25     # meters (Auto-estop if obstacle is closer than this)
+
+forbidden_zones:
+  - name: "hazardous_staircase"
+    bounds: [[1.0, 7.0], [3.0, 9.0]]
+    reason: "STAIRS_PROHIBITED_FOR_WHEELED_ASSISTIVE_ROBOT"
+  - name: "maintenance_shaft"
+    bounds: [[-4.0, -4.0], [-2.0, -2.0]]
+    reason: "RESTRICTED_ACCESS_AREA"
+
+validation_checks:
+  enforce_user_speed_limit: true
+  enforce_accessible_path_check: true
+  enforce_interaction_zone_check: true
+  reject_malformed_arguments: true

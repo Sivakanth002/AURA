@@ -1,0 +1,12 @@
+# Goal
+string object_id
+string target_location
+---
+# Result
+bool success
+string carrying_object_id
+string reason_code
+---
+# Feedback
+string action_phase  # APPROACHING, ALIGNING, ENGAGING_INTERACTION_ZONE, VERIFYING
+float32 progress_percentage

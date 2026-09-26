@@ -1,0 +1,73 @@
+"""Enumerations defining strict states, statuses, reason codes, and autonomy levels."""
+
+from enum import Enum
+
+
+class TaskStatus(str, Enum):
+    """Supported task lifecycle states per Master Specification Section 9."""
+    PENDING = "PENDING"
+    READY = "READY"
+    EXECUTING = "EXECUTING"
+    WAITING = "WAITING"
+    BLOCKED = "BLOCKED"
+    FAILED = "FAILED"
+    VERIFYING = "VERIFYING"
+    COMPLETED = "COMPLETED"
+    CANCELLED = "CANCELLED"
+
+
+class AgentState(str, Enum):
+    """Explicit agent state machine states per Master Specification Section 21."""
+    IDLE = "IDLE"
+    UNDERSTANDING = "UNDERSTANDING"
+    PLANNING = "PLANNING"
+    EXECUTING = "EXECUTING"
+    MONITORING = "MONITORING"
+    VERIFYING = "VERIFYING"
+    REPLANNING = "REPLANNING"
+    WAITING_FOR_USER = "WAITING_FOR_USER"
+    ESCALATED = "ESCALATED"
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
+
+
+class AutonomyLevel(str, Enum):
+    """Three levels of autonomy per Master Specification Section 15."""
+    LEVEL_1_AUTONOMOUS = "LEVEL_1_AUTONOMOUS"       # Low-risk, high-confidence
+    LEVEL_2_CONFIRMATION = "LEVEL_2_CONFIRMATION"   # Ambiguous or user-dependent
+    LEVEL_3_ESCALATION = "LEVEL_3_ESCALATION"       # Unsafe or impossible condition
+
+
+class ReasonCodes(str, Enum):
+    """Standardized reason codes per Master Specification Section 42."""
+    LOW_BATTERY = "LOW_BATTERY"
+    ROBOT_UNAVAILABLE = "ROBOT_UNAVAILABLE"
+    ROUTE_BLOCKED = "ROUTE_BLOCKED"
+    DYNAMIC_OBSTACLE_DETECTED = "DYNAMIC_OBSTACLE_DETECTED"
+    ACCESSIBILITY_CONSTRAINT = "ACCESSIBILITY_CONSTRAINT"
+    LOW_OBJECT_CONFIDENCE = "LOW_OBJECT_CONFIDENCE"
+    OBJECT_NOT_FOUND = "OBJECT_NOT_FOUND"
+    TASK_DEPENDENCY_NOT_MET = "TASK_DEPENDENCY_NOT_MET"
+    NAVIGATION_FAILURE = "NAVIGATION_FAILURE"
+    USER_CLARIFICATION_REQUIRED = "USER_CLARIFICATION_REQUIRED"
+    NO_SAFE_ROUTE = "NO_SAFE_ROUTE"
+    ALTERNATIVE_ROUTE_FOUND = "ALTERNATIVE_ROUTE_FOUND"
+    TASK_VERIFICATION_FAILED = "TASK_VERIFICATION_FAILED"
+    TASK_COMPLETED = "TASK_COMPLETED"
+    SAFETY_LIMIT_EXCEEDED = "SAFETY_LIMIT_EXCEEDED"
+    RECOVERY_TRIGGERED = "RECOVERY_TRIGGERED"
+    LLM_UNAVAILABLE_FALLBACK = "LLM_UNAVAILABLE_FALLBACK"
+    TOOL_EXECUTION_ERROR = "TOOL_EXECUTION_ERROR"
+    MANIPULATION_FAILED = "MANIPULATION_FAILED"
+    INVALID_PAYLOAD = "INVALID_PAYLOAD"
+
+
+class RobotStatus(str, Enum):
+    """Operational status of a robot platform."""
+    AVAILABLE = "AVAILABLE"
+    BUSY = "BUSY"
+    NAVIGATING = "NAVIGATING"
+    RETRIEVING = "RETRIEVING"
+    CHARGING = "CHARGING"
+    ERROR = "ERROR"
+    ESTOP = "ESTOP"

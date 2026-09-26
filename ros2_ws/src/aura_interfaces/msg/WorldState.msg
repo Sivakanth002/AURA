@@ -1,0 +1,5 @@
+builtin_interfaces/Time timestamp
+string active_mission_id
+string robot_status_json
+string environment_status_json
+string detected_objects_json

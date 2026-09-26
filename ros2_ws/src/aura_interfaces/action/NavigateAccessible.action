@@ -1,0 +1,16 @@
+# Goal
+string destination_node
+geometry_msgs/Point target_coordinates
+bool accessible_route_required
+float32 max_velocity
+---
+# Result
+bool success
+string final_node
+string reason_code
+float32 distance_traversed
+---
+# Feedback
+float32 distance_remaining
+string current_corridor
+float32 current_velocity

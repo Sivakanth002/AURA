@@ -1,0 +1,56 @@
+# ==============================================================================
+# Accessibility Profiles & Routing Cost Weights
+# ==============================================================================
+
+profiles:
+  wheelchair_user:
+    user_id: "user_wheelchair_01"
+    interaction: "voice"
+    accessible_routes: true
+    reduced_speed: true
+    speed_limit: 0.5  # m/s
+    audio_feedback: true
+    confirmation_level: "high"
+    prohibited_elements:
+      - "stairs"
+      - "steep_slopes"
+      - "narrow_corridors"
+    weights:
+      distance: 1.0
+      obstacle_risk: 3.0
+      congestion: 2.0
+      accessibility_penalty: 1000.0  # Prohibitive cost for stairs/inaccessible paths
+
+  visually_impaired:
+    user_id: "user_visual_01"
+    interaction: "voice"
+    accessible_routes: false
+    reduced_speed: true
+    speed_limit: 0.6  # m/s
+    audio_feedback: true
+    confirmation_level: "high"
+    prohibited_elements:
+      - "steep_dropoffs"
+      - "temporary_obstacles"
+    weights:
+      distance: 1.0
+      obstacle_risk: 5.0
+      congestion: 4.0
+      accessibility_penalty: 10.0
+
+  standard_mobility:
+    user_id: "user_standard_01"
+    interaction: "text"
+    accessible_routes: false
+    reduced_speed: false
+    speed_limit: 1.0  # m/s
+    audio_feedback: false
+    confirmation_level: "medium"
+    prohibited_elements: []
+    weights:
+      distance: 1.0
+      obstacle_risk: 1.5
+      congestion: 1.0
+      accessibility_penalty: 0.0
+
+default_profile: "wheelchair_user"

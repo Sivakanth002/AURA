@@ -1,0 +1,65 @@
+[
+  {
+    "benchmark": "Path Planning Latency",
+    "iterations": 100,
+    "total_time_s": 0.0032,
+    "avg_latency_ms": 0.032,
+    "target_max_ms": 50.0,
+    "passed": true
+  },
+  {
+    "benchmark": "Tool Validation & Dispatch Overhead",
+    "iterations": 500,
+    "avg_latency_ms": 0.028,
+    "target_max_ms": 10.0,
+    "passed": true
+  },
+  {
+    "benchmark": "Dynamic Replanning & Plan Splicing",
+    "replanning_time_ms": 0.2,
+    "success": true,
+    "target_max_ms": 100.0,
+    "passed": true
+  },
+  {
+    "benchmark": "Full Autonomous Mission (Retrieve & Deliver)",
+    "mission_status": "MISSION_COMPLETED",
+    "total_time_s": 0.0007,
+    "tasks_completed": 4,
+    "decisions_logged": 5,
+    "passed": true
+  },
+  {
+    "benchmark": "Accessibility Compliance Index",
+    "overall_score": 100.0,
+    "grade": "A+ (Exemplary Assistive Robotics Compliance)",
+    "principles": [
+      {
+        "name": "Zero-Stairs Routing Compliance",
+        "score": 100,
+        "weight": 0.25
+      },
+      {
+        "name": "Deterministic Speed Limit Enforced (<=0.5 m/s)",
+        "score": 100,
+        "weight": 0.2
+      },
+      {
+        "name": "Physical Interaction-Zone Handover (<=0.8m)",
+        "score": 100,
+        "weight": 0.2
+      },
+      {
+        "name": "Level-2 Human-in-the-Loop Clarification",
+        "score": 100,
+        "weight": 0.2
+      },
+      {
+        "name": "Zero LLM Bypass for Safety Controls",
+        "score": 100,
+        "weight": 0.15
+      }
+    ],
+    "passed": true
+  }
+]

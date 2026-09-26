@@ -1,0 +1,6 @@
+string failure_type   # OBSTACLE, LOW_BATTERY, PERCEPTION_UNCERTAINTY, ROBOT_FAILURE
+string target_entity  # corridor_A, aura_bot_01, bag_01
+float32 value         # parameter value (e.g. battery percentage or confidence drop)
+---
+bool success
+string message
