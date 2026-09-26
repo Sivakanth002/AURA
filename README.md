@@ -1,10 +1,9 @@
-# 🤖 AURA — Autonomous Assistive Robotics Agent
-> **Agentic AI Hackathon — Track 02: Assistive, Accessible & Inclusive Technology**  
+# AURA — Autonomous Assistive Robotics Agent
 > *A genuine, fully-autonomous Agentic AI robotics system providing physical assistance, accessible navigation, and multi-tier human-in-the-loop collaboration.*
 
 ---
 
-## 🌟 Overview & Key Architecture Highlights
+## Overview & Key Architecture Highlights
 
 AURA (Autonomous Assistive Robotics Agent) is engineered as an **Agent-Centric Autonomous System** where AI intelligence is the central coordinator responsible for:
 - Understanding multimodal user goals and user accessibility constraints.
@@ -16,7 +15,7 @@ AURA (Autonomous Assistive Robotics Agent) is engineered as an **Agent-Centric A
 
 ---
 
-## 🏗️ System Architecture & Specialist Layers
+## System Architecture & Specialist Layers
 
 ```
                                   ┌────────────────────────┐
@@ -67,7 +66,7 @@ AURA (Autonomous Assistive Robotics Agent) is engineered as an **Agent-Centric A
 
 ---
 
-## 🚀 Quickstart & Demonstration
+## Quickstart & Demonstration
 
 ### 1. Run Complete Automated Regression Suite (74 Tests)
 ```bash
@@ -111,10 +110,3 @@ Open **http://localhost:8000** in your browser to view:
    - Drops battery level below $20\%$, verifying immediate critical health warnings and emergency recovery triggers.
 
 ---
-
-## 📊 Benchmark & Compliance Results
-
-- **Path Planning Latency**: `0.033 ms` (Target `< 50 ms`)
-- **Tool Validation Overhead**: `0.030 ms` (Target `< 10 ms`)
-- **Dynamic Replanning Roundtrip**: `0.224 ms` (Target `< 100 ms`)
-- **Accessibility Compliance Index**: `100.0%` (Grade A+)
